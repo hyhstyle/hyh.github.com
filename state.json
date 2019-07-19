@@ -1,0 +1,201 @@
+{
+    "statusCode": "1",
+    "errorMessage": "a",
+    "totalCount": "16",
+    "data": [{
+            "iGasInter": "1",
+            "iRvalue": "0.04",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01",
+            "cGasSite": "气体报警器位置1"
+        },
+        {
+            "iGasInter": "2",
+            "iRvalue": "0.14",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01",
+            "cGasSite": "气体报警器位置2"
+
+        },
+        {
+            "iGasInter": "3",
+            "cGasSite": "气体报警器位置3",
+            "iRvalue": "0.06",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "4",
+            "cGasSite": "气体报警器位置4",
+
+            "iRvalue": "0.07",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "5",
+            "cGasSite": "气体报警器位置5",
+            "iRvalue": "0.24",
+            "cunit": "PPM",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "6",
+            "cGasSite": "气体报警器位置6",
+            "iRvalue": "0.14",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "7",
+            "cGasSite": "气体报警器位置7",
+            "iRvalue": "0.60",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "8",
+            "cGasSite": "气体报警器位置8",
+            "iRvalue": "0.04",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "9",
+            "cGasSite": "气体报警器位置9",
+            "iRvalue": "0.08",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "10",
+            "cGasSite": "气体报警器位置10",
+            "iRvalue": "0.04",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "11",
+            "cGasSite": "气体报警器位置11",
+            "iRvalue": "0.33",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "12",
+            "cGasSite": "气体报警器位置12",
+            "iRvalue": "0.04",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "13",
+            "cGasSite": "气体报警器位置13",
+            "iRvalue": "0.44",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "14",
+            "cGasSite": "气体报警器位置14",
+            "iRvalue": "0.07",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "15",
+            "cGasSite": "气体报警器位置15",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "16",
+            "cGasSite": "气体报警器位置16",
+            "iRvalue": "0.04",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "17",
+            "cGasSite": "气体报警器位置17",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "18",
+            "cGasSite": "气体报警器位置18",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "19",
+            "cGasSite": "气体报警器位置19",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "20",
+            "cGasSite": "气体报警器位置20",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "21",
+            "iRvalue": "0.09",
+            "cGasSite": "气体报警器位置21",
+
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "22",
+            "cGasSite": "气体报警器位置22",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "23",
+            "cGasSite": "气体报警器位置23",
+            "iRvalue": "0.09",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        },
+        {
+            "iGasInter": "24",
+            "iRvalue": "0.09",
+            "cGasSite": "气体报警器位置24",
+            "cunit": "LET",
+            "iGasUvalue": "0.50",
+            "iGasDvalue": "0.01"
+        }
+    ]
+}

@@ -1,0 +1,240 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta state="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+    <title>气体数据监测</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #app {
+            width: 100%;
+            height: 100%;
+            background: #000;
+        }
+        
+        .wrap {
+            width: 100%;
+            height: 100%;
+            padding: 0 3%;
+            box-sizing: border-box;
+            position: absolute;
+            box-sizing: border-box;
+        }
+        
+        .head {
+            text-align: center;
+            line-height: 60px;
+            color: #333;
+            font-size: 24px;
+            background: #d1fa19;
+        }
+        
+        .content {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .table1,
+        .table2 {
+            background: #333;
+            margin-right: 5px;
+            margin-left: 5px;
+            height: auto;
+        }
+        
+        .el-table th,
+        .el-table tr {
+            background-color: #333 !important;
+        }
+        
+        .el-table--enable-row-hover .el-table__body tr:hover>td {
+            background-color: #333 !important;
+        }
+        
+        .cell {
+            color: #fff !important;
+        }
+        
+        .normalState {
+            background: #fff;
+            color: #333;
+            padding: 0 15px;
+        }
+        
+        .dangerState {
+            /* background: #F56C6C; */
+            background: red;
+            color: #fff;
+            padding: 0 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="wrap">
+            <div class="head">气体数据监控</div>
+            <div class="content">
+                <!-- 表一布局 -->
+                <el-table class="table1" border size="small" :data="tableData1" style="width: 100%">
+                    <el-table-column prop="id" align="center" label="序号" width="100">
+                    </el-table-column>
+                    <el-table-column align="center" label="实时值" width="">
+                        <template slot-scope="scope">
+                            <span
+                            :class="[(Number(scope.row.state)>Number(scope.row.max))||(Number(scope.row.state)<Number(scope.row.min))?'dangerState':'normalState']"
+                            >{{ scope.row.state }}</span
+                            >
+                          </template>
+                    </el-table-column>
+                    <el-table-column prop="address" align="center" label="位置">
+                    </el-table-column>
+                </el-table>
+
+                <el-table class="table2" border size="small" :data="tableData2" style="width: 100%">
+                    <el-table-column prop="id" align="center" label="序号" width="100">
+                    </el-table-column>
+                    <el-table-column align="center" label="实时值" width="">
+                        <template slot-scope="scope">
+                                    <span
+                                    :class="[Number(scope.row.state)>3564?'dangerState':'normalState']"
+                                    >{{ scope.row.state }}</span
+                                    >
+                                  </template>
+                    </el-table-column>
+                    <el-table-column prop="address" align="center" label="位置">
+                    </el-table-column>
+                </el-table>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui@2.10.1/lib/index.js"></script>
+<script src="https://unpkg.com/jquery@3.4.1/dist/jquery.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            tableData1: [],
+            tableData2: [],
+        },
+        created() {
+            /* 获取数据并赋值 */
+            let scope = this;
+
+            scope.tableData1 = []
+            scope.tableData2 = []
+            $.getJSON("./state.json", function(res) {
+                console.log(res);
+                res.data.forEach((ele, index) => {
+                    let obj = {};
+                    obj.id = ele.iGasInter;
+                    obj.state = ele.iRvalue;
+                    obj.max = ele.iGasUvalue;
+                    obj.min = ele.iGasDvalue;
+                    obj.address = ele.cGasSite;
+                    if (index < 18) {
+                        scope.tableData1.push(obj)
+                    } else {
+                        scope.tableData2.push(obj)
+                    }
+                });
+            });
+
+        },
+        mounted() {
+            //-------------- 缩放节点方法-----------------------：
+            var elmnt = document.querySelector(".wrap");
+            zoomElement(elmnt);
+
+            function zoomElement(elmnt) {
+                if (elmnt.addEventListener) {
+                    // IE9, Chrome, Safari, Opera
+                    elmnt.addEventListener("mousewheel", MouseWheelHandler, false);
+                    // Firefox
+                    elmnt.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+                }
+            }
+            let i = 1;
+
+            function MouseWheelHandler(e) {
+                // cross-browser wheel delta
+                const event = window.event || e; // old IE support
+                event.preventDefault();
+                const delta = Math.max(-1,
+                    Math.min(1, event.wheelDelta || -event.detail)
+                );
+                if (delta === 1) {
+                    i += 0.05;
+                    elmnt.style.transform = "scale(" + i + ")";
+                } else if (delta === -1) {
+                    if (i < 0.3) {
+                        i = 0.2;
+                    } else {
+                        i -= 0.05;
+                    }
+                    elmnt.style.transform = "scale(" + i + ")";
+                }
+                return false;
+            }
+            // --------------------------移动节点方法-------------------------
+
+            //获取元素
+            var dv = document.querySelector(".wrap");
+            var x = 0;
+            var y = 0;
+            var l = 0;
+            var t = 0;
+            var isDown = false;
+            //鼠标按下事件
+            dv.onmousedown = function(e) {
+                //获取x坐标和y坐标
+                x = e.clientX;
+                y = e.clientY;
+
+                //获取左部和顶部的偏移量
+                l = dv.offsetLeft;
+                t = dv.offsetTop;
+                //开关打开
+                isDown = true;
+                //设置样式
+                dv.style.cursor = "move";
+            };
+            //鼠标移动
+            window.onmousemove = function(e) {
+                if (isDown == false) {
+                    return;
+                }
+                //获取x和y
+                var nx = e.clientX;
+                var ny = e.clientY;
+                //计算移动后的左偏移量和顶部的偏移量
+                var nl = nx - (x - l);
+                var nt = ny - (y - t);
+
+                // // IE9, Chrome, Safari, Opera
+                // elmnt.removeEventListener("mousewheel", MouseWheelHandler, false);
+                // // Firefox
+                // elmnt.removeEventListener("DOMMouseScroll", MouseWheelHandler, false);
+                dv.style.left = nl + "px";
+                dv.style.top = nt + "px";
+            };
+            //鼠标抬起事件
+            dv.onmouseup = function() {
+                //开关关闭
+                isDown = false;
+                dv.style.cursor = "default";
+            };
+        },
+        methods: {}
+    });
+</script>
+
+</html>
